@@ -1,0 +1,44 @@
+---
+const { class: className } = Astro.props;
+---
+
+<div class:list={className}>
+  <h2 class="accent-color">New</h2>
+  <ul role="list" class="separated-list">
+    <li>
+      <article class="flow">
+        <h3>
+          <a href="#">Article 1</a>
+        </h3>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum labore,
+          vitae, repellat nulla beatae deleniti eos quae voluptates voluptate
+          facere doloremque, culpa eligendi amet possimus voluptas dolores porro
+          quis quidem!
+        </p>
+      </article>
+    </li>
+    <li>
+      <article class="flow">
+        <h3>Article 2</h3>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum labore,
+          vitae, repellat nulla beatae deleniti eos quae voluptates voluptate
+          facere doloremque, culpa eligendi amet possimus voluptas dolores porro
+          quis quidem!
+        </p>
+      </article>
+    </li>
+    <li>
+      <article class="flow">
+        <h3>Article 3</h3>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum labore,
+          vitae, repellat nulla beatae deleniti eos quae voluptates voluptate
+          facere doloremque, culpa eligendi amet possimus voluptas dolores porro
+          quis quidem!
+        </p>
+      </article>
+    </li>
+  </ul>
+</div>
