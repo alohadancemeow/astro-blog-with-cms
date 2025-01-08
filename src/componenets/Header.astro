@@ -6,7 +6,13 @@
     <h1 class="text-4xl">W.</h1>
   </a>
 
-  <nav>
+  <button aria-controls="primary-nav" aria-expanded="false">
+    <span class="visually-hidden">Menu</span>
+    <span class="icon-hamburger">🍔</span>
+    <span class="icon-close">❌</span>
+  </button>
+
+  <nav id="primary-nav">
     <ul>
       <li><a href="/">Home</a></li>
       <li><a href="#">New</a></li>
@@ -16,6 +22,18 @@
     </ul>
   </nav>
 </header>
+
+<!-- Mobile menu -->
+<script>
+  const button = document.querySelector('[aria-controls="primary-nav"]');
+
+  if (button) {
+    button.addEventListener("click", () => {
+      const expanded = button.getAttribute("aria-expanded") === "true" || false;
+      button.setAttribute("aria-expanded", (!expanded).toString());
+    });
+  }
+</script>
 
 <style>
   header {
@@ -43,6 +61,71 @@
     }
   }
 
+  /* Mobile menu */
+  button {
+    display: none;
+  }
+
+  @media (width < 750px) {
+    button {
+      display: block;
+      position: absolute;
+      z-index: 10;
+      right: 1rem;
+      padding: 1rem;
+      background: transparent;
+      border: none;
+      font-size: var(--fs-600);
+
+      .icon-close {
+        display: none;
+      }
+    }
+    nav {
+      display: none;
+    }
+
+    [aria-expanded="true"] {
+      .icon-hamburger {
+        display: none;
+      }
+
+      .icon-close {
+        display: block;
+      }
+    }
+
+    [aria-expanded="true"] + nav {
+      display: block;
+      position: absolute;
+      height: 100dvh;
+      inset: 0;
+      z-index: 1;
+      margin-left: auto;
+      width: 80%;
+      box-shadow: 0 0 0 100vmax hsl(0 0 0 /0.4);
+      background: var(--clr-neutral-100);
+
+      ul {
+        margin-top: 20vh;
+        margin-left: 2rem;
+        display: grid;
+        gap: 3rem;
+        font-size: var(--fs-600);
+      }
+
+      a {
+        color: var(--clr-neutral-900);
+
+        &:hover,
+        &:focus-visible {
+          color: var(--clr-accent-400);
+        }
+      }
+    }
+  }
+
+  /* tab */
   .skip-to-main {
     position: absolute;
     /* background: var(--clr-accent--400);
