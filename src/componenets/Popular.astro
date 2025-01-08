@@ -2,46 +2,52 @@
 const { class: className } = Astro.props;
 ---
 
-<h2>Popular Articles</h2>
+<!-- <h2>Popular Articles</h2> -->
 <ul role="list" class:list={className}>
   <li>
     <article>
-      <img src="/blog-placeholder-about.jpg" alt="blog image" />
+      <img
+        class="blog-image"
+        src="/blog-placeholder-about.jpg"
+        alt="blog image"
+      />
       <div>
         <h3>Lorem ipsum dolor sit amet.</h3>
         <p>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Veritatis ea
-          voluptatem, architecto cum in animi sequi non quam molestiae.
-          Voluptate nisi ipsum ratione odit architecto ipsa dolorem accusamus
-          sequi rem.
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam,
+          repellendus!
         </p>
       </div>
     </article>
   </li>
   <li>
     <article>
-      <img src="/blog-placeholder-about.jpg" alt="blog image" />
+      <img
+        class="blog-image"
+        src="/blog-placeholder-about.jpg"
+        alt="blog image"
+      />
       <div>
         <h3>Lorem ipsum dolor sit amet.</h3>
         <p>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Veritatis ea
-          voluptatem, architecto cum in animi sequi non quam molestiae.
-          Voluptate nisi ipsum ratione odit architecto ipsa dolorem accusamus
-          sequi rem.
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam,
+          repellendus!
         </p>
       </div>
     </article>
   </li>
   <li>
     <article>
-      <img src="/blog-placeholder-about.jpg" alt="blog image" />
+      <img
+        class="blog-image"
+        src="/blog-placeholder-about.jpg"
+        alt="blog image"
+      />
       <div>
         <h3>Lorem ipsum dolor sit amet.</h3>
         <p>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Veritatis ea
-          voluptatem, architecto cum in animi sequi non quam molestiae.
-          Voluptate nisi ipsum ratione odit architecto ipsa dolorem accusamus
-          sequi rem.
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam,
+          repellendus!
         </p>
       </div>
     </article>
@@ -56,7 +62,7 @@ const { class: className } = Astro.props;
 
     > div {
       display: grid;
-      gap: .5rem;
+      gap: 0.5rem;
 
       &::before {
         line-height: 1;

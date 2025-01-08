@@ -121,15 +121,27 @@ footer {
   }
 }
 
-.three-colums {
+.three-columns {
   display: grid;
   gap: 1rem;
+
+  .blog-image {
+    width: 100%;
+    height: 110px;
+    object-fit: cover;
+  }
 
   @container (width > calc(3 * 25ch)) {
     grid-template-columns: repeat(3, 1fr);
 
     > .span-2 {
       grid-column: span 2;
+    }
+
+    .blog-image {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
     }
   }
 }
