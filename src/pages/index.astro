@@ -3,6 +3,11 @@ import Featured from "../componenets/Featured.astro";
 import Popular from "../componenets/Popular.astro";
 import New from "../componenets/New.astro";
 import RootLayout from "../layouts/RootLayout.astro";
+
+import { fetchArticles } from "../lib/fetch-articles";
+
+const articles = await fetchArticles({});
+console.log(articles.length, "articles");
 ---
 
 <RootLayout>

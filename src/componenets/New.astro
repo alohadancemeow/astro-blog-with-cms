@@ -1,38 +1,26 @@
 ---
+import { fetchArticles } from "../lib/fetch-articles";
+
+const newArticles = await fetchArticles({ limit: 3, isNew: true });
+// console.log(newArticles, "new articles");
+
 const { class: className } = Astro.props;
 ---
 
 <div class:list={className}>
   <h2 class="accent-color">New</h2>
   <ul role="list" class="separated-list">
-    <li>
-      <article class="flow">
-        <h3>
-          <a href="#">Article 1</a>
-        </h3>
-        <p>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Labore,
-          quaerat.
-        </p>
-      </article>
-    </li>
-    <li>
-      <article class="flow">
-        <h3>Article 2</h3>
-        <p>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Labore,
-          quaerat.
-        </p>
-      </article>
-    </li>
-    <li>
-      <article class="flow">
-        <h3>Article 3</h3>
-        <p>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Labore,
-          quaerat.
-        </p>
-      </article>
-    </li>
+    {
+      newArticles.map((article) => (
+        <li>
+          <article class="flow">
+            <h3>
+              <a href={`/article/${article?._id}`}>{article.data?.title}</a>
+            </h3>
+            <p class="truncate-text">{article.data?.content}</p>
+          </article>
+        </li>
+      ))
+    }
   </ul>
 </div>

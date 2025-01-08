@@ -1,20 +1,21 @@
 ---
+import { fetchArticles } from "../lib/fetch-articles";
+
+const featuredArticle = await fetchArticles({ featured: true });
+
 const { class: className } = Astro.props;
 ---
 
 <div class:list={[className, "featured-article-container"]}>
   <h2 class="visually-hidden">Featured Article</h2>
   <article>
-    <img src="/blog-placeholder-1.jpg" alt="image" />
-    <h3>Lorem ipsum dolor sit amet consectetur.</h3>
+    <img src={`${featuredArticle[0].data?.coverImage}`} alt="cover-image" />
+    <h3>{featuredArticle[0].data?.title}</h3>
     <div class="flow">
       <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis error
-        architecto temporibus voluptatem illum necessitatibus adipisci
-        cupiditate natus eum harum ab ea, molestiae excepturi iusto veritatis
-        assumenda ipsum hic quod.
+        {featuredArticle[0].data?.content}
       </p>
-      <a href="#" class="button">
+      <a href={`/article/${featuredArticle[0]?._id}`} class="button">
         Read More
         <span class="visually-hidden"> Lorem ipsum dolor sit amet. </span>
       </a>

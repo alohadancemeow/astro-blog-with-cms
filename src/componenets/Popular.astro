@@ -1,60 +1,42 @@
 ---
+import { fetchArticles } from "../lib/fetch-articles";
+
+const articles = await fetchArticles({});
+
 const { class: className } = Astro.props;
 ---
 
-<!-- <h2>Popular Articles</h2> -->
+<!-- <h2 class="accent-color heading">Popular Articles</h2> -->
 <ul role="list" class:list={className}>
-  <li>
-    <article>
-      <img
-        class="blog-image"
-        src="/blog-placeholder-about.jpg"
-        alt="blog image"
-      />
-      <div>
-        <h3>Lorem ipsum dolor sit amet.</h3>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam,
-          repellendus!
-        </p>
-      </div>
-    </article>
-  </li>
-  <li>
-    <article>
-      <img
-        class="blog-image"
-        src="/blog-placeholder-about.jpg"
-        alt="blog image"
-      />
-      <div>
-        <h3>Lorem ipsum dolor sit amet.</h3>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam,
-          repellendus!
-        </p>
-      </div>
-    </article>
-  </li>
-  <li>
-    <article>
-      <img
-        class="blog-image"
-        src="/blog-placeholder-about.jpg"
-        alt="blog image"
-      />
-      <div>
-        <h3>Lorem ipsum dolor sit amet.</h3>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam,
-          repellendus!
-        </p>
-      </div>
-    </article>
-  </li>
+  {
+    articles.map((article) => (
+      <li>
+        <article>
+          <img
+            class="blog-image"
+            src={article?.data?.coverImage}
+            alt={article?.data?.title}
+          />
+          <div>
+            <h3>
+              <a href={`/article/${article?._id}`}>{article?.data?.title}</a>
+            </h3>
+            <p class="truncate-text" style="--max-lines: 4">
+              {article?.data?.content}
+            </p>
+          </div>
+        </article>
+      </li>
+    ))
+  }
 </ul>
 
 <style>
+  /* .heading {
+    font-size: var(--fs-600);
+    font-weight: var(--fw-semi-bold);
+    margin: 2rem 0;
+  } */
   article {
     display: grid;
     gap: 1rem;
