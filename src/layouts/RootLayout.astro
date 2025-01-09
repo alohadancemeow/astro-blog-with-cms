@@ -3,8 +3,9 @@ import "../style.css";
 // import "../styles/global.css"
 import Header from "../componenets/Header.astro";
 import Footer from "../componenets/Footer.astro";
+import { SITE_TITLE } from "../consts";
 
-const { title = "blog demo" } = Astro.props;
+const { title } = Astro.props;
 ---
 
 <html lang="en">
@@ -13,7 +14,7 @@ const { title = "blog demo" } = Astro.props;
     <link rel="icon" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
+    <title>{title ?? SITE_TITLE}</title>
   </head>
 
   <body class="base-layout relative">

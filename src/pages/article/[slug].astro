@@ -22,7 +22,7 @@ const { articleData } = Astro.props;
 // console.log(articleData, "articleData");
 ---
 
-<RootLayout>
+<RootLayout title={articleData?.title}>
   <div class="three-columns section relative">
     <div class="span-2">
       <img
