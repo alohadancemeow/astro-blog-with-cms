@@ -2,6 +2,7 @@
 import New from "../../componenets/New.astro";
 import RootLayout from "../../layouts/RootLayout.astro";
 import { fetchArticles } from "../../lib/fetch-articles";
+import { formatDate } from "../../lib/date-format";
 
 export async function getStaticPaths() {
   const articles = await fetchArticles({});
@@ -17,52 +18,78 @@ export async function getStaticPaths() {
 }
 
 const { articleData } = Astro.props;
-console.log(articleData, "articleData");
+// console.log(articleData, "articleData");
 ---
 
 <RootLayout>
   <div class="three-columns section">
     <div class="span-2">
       <img
-        class="h-[417px] w-full object-cover"
+        class="max-h-[513px] w-full object-cover"
         src={`${articleData?.coverImage}`}
         alt="cover-image"
       />
 
       <div class="py-6 px-4 bg-white shadow-md mx-auto">
-        <h1 class="text-3xl font-bold text-gray-800 mb-2">
+        <h1 class="text-4xl font-bold text-gray-800 mb-2">
           {articleData?.title}
         </h1>
         <div class="flex justify-between items-center">
-          <p class="text-gray-600 mb-4">
-            Written by:
-            <span class="font-medium text-blue-600">
-              {articleData?.author}
-            </span>
-          </p>
+          <div class="flex flex-wrap gap-2">
+            {
+              articleData?.arraystring.map((tag: string) => (
+                <span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">
+                  {tag}
+                </span>
+              ))
+            }
+          </div>
           <div class="flex items-center mb-4">
             <span class="text-yellow-500 text-lg">&#9733;</span>
-            <span class="ml-1 text-gray-700 font-semibold">4.5</span>
+            <span class="ml-1 text-gray-700 font-semibold"
+              >{articleData?.rating}</span
+            >
           </div>
         </div>
-        <div class="flex flex-wrap gap-2">
-          {
-            articleData?.arraystring.map((tag: string) => (
-              <span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">
-                {tag}
-              </span>
-            ))
-          }
-        </div>
       </div>
-      <div class="flow my-8 px-4" set:html={articleData?.body} />
     </div>
 
     <!-- New articles -->
-    <New class="inverted flow h-fit min-h-[579px]" />
+    <div class="hide">
+      <New class="inverted flow h-full" />
+    </div>
 
-    <div class="mt-6">
-      <a href="/" class="text-blue-600 hover:underline">← Back to Home</a>
+    <!-- content -->
+    <div class="flow mt-8 px-4 col-span-2">
+      <div set:html={articleData?.body} />
+
+      <!-- Author and Date Section -->
+      <div class="mt-8 text-gray-600 text-sm border-t pt-4">
+        <p>
+          Written by:
+          <span class="font-medium text-gray-800">
+            {articleData?.author}
+          </span>
+        </p>
+        <p>
+          Published on:
+          <span class="font-medium text-gray-800">
+            {formatDate(articleData?.publishedDate)}
+          </span>
+        </p>
+      </div>
+
+      <div class="mt-8">
+        <a href="/" class="text-blue-600 hover:underline">← Back to Home</a>
+      </div>
     </div>
   </div>
 </RootLayout>
+
+<style>
+  @media (width < 750px) {
+    .hide {
+      display: none;
+    }
+  }
+</style>

@@ -1,9 +1,12 @@
+---
+import { SITE_TITLE } from "../consts";
+---
+
 <header>
   <a href="#main-content" class="skip-to-main"> Skip to main content </a>
   <h1 class="visually-hidden">The W.</h1>
-  <a href="/" class="logo">
-    <!-- <img src="/logo.svg" alt="The W." /> -->
-    <h1 class="text-4xl">Astro Blog</h1>
+  <a href="/" class="button text-xl">
+    {SITE_TITLE}
   </a>
 
   <button aria-controls="primary-nav" aria-expanded="false">
@@ -48,15 +51,14 @@
     padding: 0;
     display: flex;
     gap: 1rem;
-  }
+    a {
+      color: currentColor;
 
-  a {
-    text-decoration: none;
-    color: currentColor;
-
-    &:hover,
-    &:focus-visible {
-      color: var(--clr-accent--400);
+      &:hover,
+      &:focus-visible {
+        text-decoration: underline var(--clr-accent-400) 2px;
+        color: var(--clr-accent--400);
+      }
     }
   }
 
