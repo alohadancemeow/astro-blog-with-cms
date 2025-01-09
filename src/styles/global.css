@@ -4,7 +4,7 @@
   License MIT: https://github.com/HermanMartinus/bearblog/blob/master/LICENSE.md
  */
 
-:root {
+/* :root {
 	--accent: #2337ff;
 	--accent-dark: #000d8a;
 	--black: 15, 18, 25;
@@ -47,8 +47,8 @@ main {
 	max-width: calc(100% - 2em);
 	margin: auto;
 	padding: 3em 1em;
-}
-h1,
+} */
+/* h1,
 h2,
 h3,
 h4,
@@ -72,7 +72,7 @@ h4 {
 }
 h5 {
 	font-size: 1.25em;
-}
+} */
 strong,
 b {
 	font-weight: 700;
@@ -99,11 +99,11 @@ input {
 table {
 	width: 100%;
 }
-img {
+/* img {
 	max-width: 100%;
 	height: auto;
 	border-radius: 8px;
-}
+} */
 code {
 	padding: 2px 5px;
 	background-color: rgb(var(--gray-light));
@@ -126,14 +126,14 @@ hr {
 	border: none;
 	border-top: 1px solid rgb(var(--gray-light));
 }
-@media (max-width: 720px) {
+/* @media (max-width: 720px) {
 	body {
 		font-size: 18px;
 	}
 	main {
 		padding: 1em;
 	}
-}
+} */
 
 .sr-only {
 	border: 0;
