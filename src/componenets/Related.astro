@@ -1,0 +1,54 @@
+---
+import { fetchArticles } from "../lib/fetch-articles";
+
+const articles = await fetchArticles({ limit: 4 });
+
+const { class: className } = Astro.props;
+---
+
+<h2 class="accent-color mb-8">Related Articles</h2>
+<ul role="list" class:list={className}>
+  {
+    articles.map((article) => (
+      <li>
+        <article>
+          <img
+            class="blog-image"
+            src={article?.data?.coverImage}
+            alt={article?.data?.title}
+          />
+          <div>
+            <h3>
+              <a href={`/article/${article?._id}`}>{article?.data?.title}</a>
+            </h3>
+            <p class="truncate-text" style="--max-lines: 3">
+              {article?.data?.content}
+            </p>
+            <div class="flex items-center">
+              <span class="text-yellow-500 text-lg">&#9733;</span>
+              <span class="ml-1 text-gray-700 font-semibold">
+                {article?.data?.rating}
+              </span>
+            </div>
+          </div>
+        </article>
+      </li>
+    ))
+  }
+</ul>
+
+<style>
+  article {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 100px auto;
+  }
+
+  ul {
+    counter-reset: article-count;
+  }
+  li {
+    counter-increment: article-count;
+    margin-block-end: 2rem;
+  }
+</style>

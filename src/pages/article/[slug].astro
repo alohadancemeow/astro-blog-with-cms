@@ -3,6 +3,7 @@ import New from "../../componenets/New.astro";
 import RootLayout from "../../layouts/RootLayout.astro";
 import { fetchArticles } from "../../lib/fetch-articles";
 import { formatDate } from "../../lib/date-format";
+import Related from "../../componenets/Related.astro";
 
 export async function getStaticPaths() {
   const articles = await fetchArticles({});
@@ -22,7 +23,7 @@ const { articleData } = Astro.props;
 ---
 
 <RootLayout>
-  <div class="three-columns section">
+  <div class="three-columns section relative">
     <div class="span-2">
       <img
         class="max-h-[513px] w-full object-cover"
@@ -82,6 +83,11 @@ const { articleData } = Astro.props;
       <div class="mt-8">
         <a href="/" class="text-blue-600 hover:underline">← Back to Home</a>
       </div>
+    </div>
+
+    <!-- Related articles -->
+    <div class="hide h-fit p-8 sticky top-16 max-h-screen overflow-auto">
+      <Related />
     </div>
   </div>
 </RootLayout>
