@@ -44,3 +44,5 @@ All commands are run from the root of the project, from a terminal:
 | `npm run preview`         | Preview your build locally, before deploying     |
 | `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
 | `npm run astro -- --help` | Get help using the Astro CLI                     |
+
+This project was inspired by [this video](https://youtu.be/Thudicbgqtg?si=iZ4CNTW_L4m9dGx5). 🙏
